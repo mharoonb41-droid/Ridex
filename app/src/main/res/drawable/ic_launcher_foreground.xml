@@ -1,0 +1,10 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Centered Logo -->
+    <item>
+        <bitmap
+            android:src="@drawable/ridex_logo"
+            android:gravity="center"/>
+    </item>
+
+</layer-list>

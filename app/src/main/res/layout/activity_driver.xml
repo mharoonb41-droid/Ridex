@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0F0F0F">
+
+    <!-- Google Map -->
+    <fragment
+        android:id="@+id/driverMap"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <!-- Top Bar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#CC0F0F0F"
+        android:padding="16dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="RideX Driver"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#FFD700"/>
+
+        <Button
+            android:id="@+id/logoutBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:text="Logout"
+            android:textSize="12sp"
+            android:textColor="#FFD700"
+            android:backgroundTint="#1F1F1F"/>
+
+    </LinearLayout>
+
+    <!-- Bottom Card -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        android:background="#EE0F0F0F"
+        android:padding="24dp">
+
+        <!-- Driver Status -->
+        <TextView
+            android:id="@+id/driverStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Waiting for ride requests..."
+            android:textColor="#AAAAAA"
+            android:textSize="16sp"
+            android:layout_marginBottom="12dp"/>
+
+        <!-- Rider Info (hidden by default) -->
+        <TextView
+            android:id="@+id/riderInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:visibility="gone"
+            android:layout_marginBottom="12dp"/>
+
+        <!-- Accept Ride Button -->
+        <Button
+            android:id="@+id/acceptRideBtn"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="ACCEPT RIDE !"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#0F0F0F"
+            android:backgroundTint="#FFD700"
+            android:visibility="gone"
+            android:layout_marginBottom="12dp"/>
+
+        <!-- Complete Ride Button -->
+        <Button
+            android:id="@+id/completeRideBtn"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="COMPLETE RIDE "
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#0F0F0F"
+            android:backgroundTint="#00C853"
+            android:visibility="gone"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
