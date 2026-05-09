@@ -1,19 +1,108 @@
-RideX — Ride Sharing App:
- A real-time ride sharing Android application built with Java & Firebase — similar to Uber.
- Features:
+# 🚗 RideX — Ride Sharing App
 
-**User Authentication** — Email/Password login & registration via Firebase Auth
-**Rider Module** — Request rides, view price & distance, track driver in real-time
-**Driver Module** — Accept ride requests, navigate to rider & destination
-**Google Maps Integration** — Live map, route drawing with golden polyline
-**Live Location** — Real-time GPS location tracking for both rider & driver
-**Price Calculation** — Auto fare calculation based on distance (Rs. 100 base + Rs. 50/km)
-**Distance & ETA** — Shows distance and estimated time before booking
-**Real-time Updates** — Firebase Realtime Database syncs ride status instantly
-**Route Finding** — Directions API draws turn-by-turn route on map
+> A real-time ride sharing Android application built with Java & Firebase — similar to Uber.
 
+![Platform](https://img.shields.io/badge/Platform-Android-green?style=for-the-badge&logo=android)
+![Language](https://img.shields.io/badge/Language-Java-orange?style=for-the-badge&logo=java)
+![Firebase](https://img.shields.io/badge/Backend-Firebase-yellow?style=for-the-badge&logo=firebase)
+![Maps](https://img.shields.io/badge/Maps-Google%20Maps-blue?style=for-the-badge&logo=google-maps)
+![Status](https://img.shields.io/badge/Status-Active-brightgreen?style=for-the-badge)
 
-Tech Stack
+---
+
+## 📱 Screenshots
+
+> _Add your app screenshots here_
+
+| Login Screen | Rider Screen | Driver Screen |
+|---|---|---|
+| ![login](#) | ![rider](#) | ![driver](#) |
+
+---
+
+## 🎯 Features
+
+- 🔐 **User Authentication** — Email/Password login & registration via Firebase Auth
+- 🧍 **Rider Module** — Request rides, view price & distance, track driver in real-time
+- 🚗 **Driver Module** — Accept ride requests, navigate to rider & destination
+- 🗺️ **Google Maps Integration** — Live map, route drawing with golden polyline
+- 📍 **Live Location** — Real-time GPS location tracking for both rider & driver
+- 💰 **Price Calculation** — Auto fare calculation based on distance (Rs. 100 base + Rs. 50/km)
+- 📏 **Distance & ETA** — Shows distance and estimated time before booking
+- 🔄 **Real-time Updates** — Firebase Realtime Database syncs ride status instantly
+- 🗺️ **Route Finding** — Directions API draws turn-by-turn route on map
+
+---
+
+## 🏗️ Project Structure
+
+```
+RideX/
+├── app/
+│   ├── src/main/
+│   │   ├── java/com/example/ridex/
+│   │   │   ├── MainActivity.java          # Login Screen
+│   │   │   ├── RegisterActivity.java      # Register Screen
+│   │   │   ├── RiderActivity.java         # Rider Dashboard + Map
+│   │   │   ├── DriverActivity.java        # Driver Dashboard + Map
+│   │   │   ├── MapsHelper.java            # Route & Price Calculator
+│   │   │   └── models/
+│   │   │       ├── User.java              # User Data Model
+│   │   │       └── RideRequest.java       # Ride Request Model
+│   │   │
+│   │   ├── res/
+│   │   │   ├── layout/
+│   │   │   │   ├── activity_main.xml      # Login UI
+│   │   │   │   ├── activity_register.xml  # Register UI
+│   │   │   │   ├── activity_rider.xml     # Rider UI
+│   │   │   │   └── activity_driver.xml    # Driver UI
+│   │   │   └── drawable/
+│   │   │       └── input_background.xml   # Custom Input Style
+│   │   │
+│   │   └── AndroidManifest.xml
+│   │
+│   ├── google-services.json               # Firebase Config (not committed)
+│   └── build.gradle.kts
+│
+└── build.gradle.kts
+```
+
+---
+
+## 🔄 App Workflow
+
+```
+┌─────────────────────────────────────────────┐
+│                  RideX App                  │
+└─────────────────────────────────────────────┘
+                      │
+              ┌───────▼────────┐
+              │  Login Screen  │
+              └───────┬────────┘
+                      │
+          ┌───────────┴───────────┐
+          │                       │
+    ┌─────▼──────┐         ┌──────▼─────┐
+    │   RIDER    │         │   DRIVER   │
+    └─────┬──────┘         └──────┬─────┘
+          │                       │
+    Map Open               Map Open
+    Location Get           Location Get
+          │                       │
+    Tap Destination        Wait for Requests
+    Check Price                   │
+    See Route              New Request Alert
+          │                       │
+    Book Ride ──► Firebase ◄── Accept Ride
+          │                       │
+    "Driver Coming"        Draw Route to Rider
+          │                       │
+    "Ride Complete" ◄──── Complete Ride
+```
+
+---
+
+## 🛠️ Tech Stack
 
 | Technology | Purpose |
 |---|---|
@@ -26,11 +115,11 @@ Tech Stack
 | **Google Distance Matrix API** | Distance & ETA calculation |
 | **FusedLocationProvider** | Accurate GPS location |
 
+---
 
+## 🔥 Firebase Database Structure
 
- Firebase Database Structure
-
-json
+```json
 {
   "users": {
     "userId": {
@@ -55,25 +144,25 @@ json
     }
   }
 }
+```
 
+---
 
+## 🚀 Getting Started
 
-
-Getting Started:
-
-# Prerequisites
+### Prerequisites
 - Android Studio (latest version)
 - JDK 17
 - Firebase Account
 - Google Cloud Console Account
 
-# Installation
+### Installation
 
 **1. Clone the repository**
-bash
+```bash
 git clone https://github.com/yourusername/RideX.git
 cd RideX
-
+```
 
 **2. Firebase Setup**
 - Go to [firebase.google.com](https://firebase.google.com)
@@ -94,19 +183,19 @@ cd RideX
 **4. Add API Keys**
 
 In `AndroidManifest.xml`:
-xml
+```xml
 <meta-data
     android:name="com.google.android.geo.API_KEY"
     android:value="YOUR_GOOGLE_MAPS_API_KEY"/>
-
+```
 
 In `RiderActivity.java` and `DriverActivity.java`:
-java
+```java
 private static final String API_KEY = "YOUR_GOOGLE_MAPS_API_KEY";
-
+```
 
 **5. Firebase Database Rules**
-json
+```json
 {
   "rules": {
     "users": {
@@ -121,17 +210,17 @@ json
     }
   }
 }
-
+```
 
 **6. Run the app**
 - Open project in Android Studio
-- Click **Run **
+- Click **Run ▶️**
 
 ---
 
-##  Pricing Formula
+## 💰 Pricing Formula
 
-
+```
 Base Fare  =  Rs. 100
 Per KM     =  Rs. 50
 
@@ -139,32 +228,34 @@ Total Price = Rs. 100 + (distance_in_km × Rs. 50)
 
 Example:
   5 km ride = Rs. 100 + (5 × 50) = Rs. 350
-
-
-##  Ride Status Flow
-
-| Status | Rider Sees | Driver Sees |
-|---|---|---|
-| `pending` |  Searching for driver... |  New ride request! |
-| `accepted` |  Driver mil gaya! | Navigate to rider |
-| `completed` |  Ride Complete! | Next ride wait |
+```
 
 ---
 
-##  Upcoming Features
+## 🗺️ Ride Status Flow
 
-- [ ] Push Notifications (Firebase Cloud Messaging)
-- [ ]  Driver Rating System
-- [ ]  In-app Chat (Rider ↔ Driver)
-- [ ]  Driver Live Location on Rider's Map
-- [ ]  JazzCash / Easypaisa Payment Integration
-- [ ]  Ride History Screen
-- [ ]  Profile Screen with Photo Upload
-- [ ]  Dark / Light Theme Toggle
+| Status | Rider Sees | Driver Sees |
+|---|---|---|
+| `pending` | 🔍 Searching for driver... | 🚨 New ride request! |
+| `accepted` | ✅ Driver mil gaya! | Navigate to rider |
+| `completed` | 🎉 Ride Complete! | Next ride wait |
 
+---
 
+## 🔮 Upcoming Features
 
-## Contributing
+- [ ] 🔔 Push Notifications (Firebase Cloud Messaging)
+- [ ] ⭐ Driver Rating System
+- [ ] 💬 In-app Chat (Rider ↔ Driver)
+- [ ] 📍 Driver Live Location on Rider's Map
+- [ ] 💳 JazzCash / Easypaisa Payment Integration
+- [ ] 🕐 Ride History Screen
+- [ ] 👤 Profile Screen with Photo Upload
+- [ ] 🌙 Dark / Light Theme Toggle
+
+---
+
+## 🤝 Contributing
 
 Pull requests are welcome! For major changes, please open an issue first.
 
@@ -182,8 +273,8 @@ This project is licensed under the MIT License.
 
 ---
 
-##  Developer
-[M.Haroon]
+## 👨‍💻 Developer
+
 Built with ❤️ as a real-world Android learning project.
 
 > _Inspired by Uber, Indrive, and Yango_
